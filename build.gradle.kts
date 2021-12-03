@@ -75,6 +75,20 @@ publishing {
             }
         }
     }
+    publications {
+        create<MavenPublication>("mavenJava") {
+            artifactId = "betterlibs"
+            from(components["java"])
+            versionMapping {
+                usage("java-api") {
+                    fromResolutionOf("runtimeClasspath")
+                }
+                usage("java-runtime") {
+                    fromResolutionResult()
+                }
+            }
+        }
+    }
 }
 
 pluginBundle {
@@ -82,49 +96,6 @@ pluginBundle {
     vcsUrl = "https://github.com/betterme-dev/BetterLibs.git"
     tags = listOf("dependencies", "updates", "libraries", "notifications")
 }
-
-gradlePlugin {
-    plugins {
-        register("betterlibs") {
-            id = "world.betterme.betterlibs"
-            displayName = "BetterLibs"
-            implementationClass = "world.betterme.betterlibs.BetterLibsPlugin"
-            description = "Gradle plugin reporting third party libraries update"
-        }
-    }
-}
-
-//
-//nexusPublishing {
-//    repositories {
-//        create("myNexus") {
-//            nexusUrl.set(uri("https://nexus-repo.betterme.world/repository/android-libraries/staging/"))
-//            snapshotRepositoryUrl.set(uri("https://nexus-repo.betterme.world/repository/android-libraries/"))
-//            username.set("android")
-//            password.set("too0ciqu8ooV")
-//        }
-//    }
-//}
-
-fun setupPublishingEnvironment() {
-    val keyProperty = "gradle.publish.key"
-    val secretProperty = "gradle.publish.secret"
-
-    if (System.getProperty(keyProperty) == null || System.getProperty(secretProperty) == null) {
-        logger.info("`$keyProperty` or `$secretProperty` were not set. Attempting to configure from environment variables")
-
-        val key: String? = System.getenv("GRADLE_PUBLISH_KEY")
-        val secret: String? = System.getenv("GRADLE_PUBLISH_SECRET")
-        if (!key.isNullOrBlank() && !secret.isNullOrBlank()) {
-            System.setProperty(keyProperty, key)
-            System.setProperty(secretProperty, secret)
-        } else {
-            logger.warn("key or secret was null")
-        }
-    }
-}
-
-//setupPublishingEnvironment()
 
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:0.39.0")
