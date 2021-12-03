@@ -73,8 +73,8 @@ publishing {
 nexusPublishing {
     repositories {
         create("betterNexus") {
-            nexusUrl.set(uri(loadPropertyForKey("NEXUS_URL")))
-            snapshotRepositoryUrl.set(uri(loadPropertyForKey("NEXUS_URL")))
+            nexusUrl.set(uri("${loadPropertyForKey("NEXUS_URL")}/"))
+            snapshotRepositoryUrl.set(uri("${loadPropertyForKey("NEXUS_URL")}/"))
             username.set(loadPropertyForKey("USER_NAME"))
             password.set(loadPropertyForKey("USER_PSWRD"))
         }
