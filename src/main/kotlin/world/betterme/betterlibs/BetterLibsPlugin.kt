@@ -70,6 +70,6 @@ open class BetterLibsPlugin : Plugin<Project> {
 
         private const val SLACK_TASK_NAME = "createSlackMessage"
         private const val GRADLE_PLUGIN_VERSION_TASK_NAME = ":dependencyUpdates"
-        private const val EXTENSION_NAME = "deblibs"
+        private const val EXTENSION_NAME = "betterlibs"
     }
 }

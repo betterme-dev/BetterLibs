@@ -63,7 +63,7 @@ repositories {
 }
 
 group = "world.betterme"
-version = "1.0.2"
+version = "1.0.3"
 
 publishing {
     repositories {
