@@ -44,10 +44,7 @@ class SlackClient(
     private fun makePostRequest(): Pair<Response?, Int> {
         val json = moshiAdapter.toJson(slackMessage)
         return postRequest(
-            json,
-            "https://slack.com/api/chat.postMessage",
-            AUTHORIZATION,
-            "Bearer $token"
+            json, "https://slack.com/api/chat.postMessage", AUTHORIZATION, "Bearer $token"
         )
     }
 }
