@@ -19,6 +19,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 buildscript {
     repositories {
         mavenCentral()
+        gradlePluginPortal()
         maven {
             url = uri(System.getenv().getOrDefault("NEXUS_URL", ""))
             credentials {
@@ -51,6 +52,7 @@ apply {
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
     maven {
         url = uri(System.getenv().getOrDefault("NEXUS_URL", ""))
         credentials {
