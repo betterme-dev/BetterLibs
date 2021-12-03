@@ -63,6 +63,18 @@ repositories {
 group = "world.betterme"
 version = "1.0.0"
 
+publishing {
+    repositories {
+        maven {
+            url = uri(System.getenv().getOrDefault("NEXUS_URL", ""))
+            credentials {
+                username = System.getenv().getOrDefault("USER_NAME", "")
+                password = System.getenv().getOrDefault("USER_PSWRD", "")
+            }
+        }
+    }
+}
+
 pluginBundle {
     website = "https://github.com/betterme-dev/BetterLibs"
     vcsUrl = "https://github.com/betterme-dev/BetterLibs.git"
