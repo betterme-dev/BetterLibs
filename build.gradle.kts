@@ -63,7 +63,7 @@ repositories {
 }
 
 group = "world.betterme"
-version = "1.0.1"
+version = "1.0.2"
 
 publishing {
     repositories {
@@ -87,6 +87,17 @@ publishing {
                     fromResolutionResult()
                 }
             }
+        }
+    }
+}
+
+gradlePlugin {
+    plugins {
+        register("betterlibs") {
+            id = "world.betterme.betterlibs"
+            displayName = "BetterLibs"
+            implementationClass = "world.betterme.betterlibs.BetterLibsPlugin"
+            description = "Gradle plugin reporting third party libraries update"
         }
     }
 }
