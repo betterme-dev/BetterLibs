@@ -20,13 +20,20 @@ buildscript {
     repositories {
         mavenCentral()
         maven {
-            url = uri(loadPropertyForKey("NEXUS_URL"))
+            url = uri(System.getenv().getOrDefault("NEXUS_URL", ""))
             credentials {
-                username = loadPropertyForKey("USER_NAME")
-                password = loadPropertyForKey("USER_PSWRD")
+                username = System.getenv().getOrDefault("USER_NAME", "")
+                password = System.getenv().getOrDefault("USER_PSWRD", "")
             }
         }
     }
+
+
+    // Properties will be injected by Jenkins
+    fun loadPropertyForKey(key: String): String {
+        return System.getenv().getOrDefault(key, "")
+    }
+
 }
 
 plugins {
@@ -45,10 +52,10 @@ apply {
 repositories {
     mavenCentral()
     maven {
-        url = uri(loadPropertyForKey("NEXUS_URL"))
+        url = uri(System.getenv().getOrDefault("NEXUS_URL", ""))
         credentials {
-            username = loadPropertyForKey("USER_NAME")
-            password = loadPropertyForKey("USER_PSWRD")
+            username = System.getenv().getOrDefault("USER_NAME", "")
+            password = System.getenv().getOrDefault("USER_PSWRD", "")
         }
     }
 }
@@ -121,9 +128,4 @@ tasks.withType<KotlinCompile>().configureEach {
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
-}
-
-// Properties will be injected by Jenkins
-fun loadPropertyForKey(key: String): String {
-    return System.getenv().getOrDefault(key, "")
 }
