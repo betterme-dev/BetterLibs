@@ -19,7 +19,7 @@ node('android') {
             checkout scm
         }
         stage('Deploy library') {
-            sh("sh ./gradlew publishToBetterNexus")
+            sh("sh ./gradlew publish")
         }
 
         stage('Notify') {
