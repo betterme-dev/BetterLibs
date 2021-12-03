@@ -12,6 +12,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.39.0"
     id("org.gradle.kotlin.embedded-kotlin") version "2.1.4"
     id("org.gradle.kotlin.kotlin-dsl") version "2.1.4"
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     `java-gradle-plugin`
     `maven-publish`
 }
@@ -25,7 +26,7 @@ repositories {
     gradlePluginPortal()
 }
 
-group = "world.betterme.betterlibs"
+group = "world.betterme"
 version = "1.0.0"
 
 pluginBundle {
@@ -41,6 +42,25 @@ gradlePlugin {
             displayName = "BetterLibs"
             implementationClass = "world.betterme.betterlibs.BetterLibsPlugin"
             description = "Gradle plugin reporting third party libraries update"
+        }
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
+}
+
+nexusPublishing {
+    repositories {
+        create("betterNexus") {
+            nexusUrl.set(uri(loadPropertyForKey("NEXUS_URL")))
+            snapshotRepositoryUrl.set(uri(loadPropertyForKey("NEXUS_URL")))
+            username.set(loadPropertyForKey("USER_NAME"))
+            password.set(loadPropertyForKey("USER_PSWRD"))
         }
     }
 }
@@ -81,4 +101,9 @@ tasks.withType<KotlinCompile>().configureEach {
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+// Properties will be injected by Jenkins
+fun loadPropertyForKey(key: String): String {
+    return System.getenv().getOrDefault(key, "")
 }
