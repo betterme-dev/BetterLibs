@@ -19,7 +19,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 buildscript {
     repositories {
         mavenCentral()
-        gradlePluginPortal()
+        maven {
+            url = uri(loadPropertyForKey("NEXUS_URL"))
+            credentials {
+                username = loadPropertyForKey("USER_NAME")
+                password = loadPropertyForKey("USER_PSWRD")
+            }
+        }
     }
 }
 
@@ -28,7 +34,6 @@ plugins {
     id("com.github.ben-manes.versions") version "0.39.0"
     id("org.gradle.kotlin.embedded-kotlin") version "2.1.4"
     id("org.gradle.kotlin.kotlin-dsl") version "2.1.4"
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     `java-gradle-plugin`
     `maven-publish`
 }
@@ -39,7 +44,13 @@ apply {
 
 repositories {
     mavenCentral()
-    gradlePluginPortal()
+    maven {
+        url = uri(loadPropertyForKey("NEXUS_URL"))
+        credentials {
+            username = loadPropertyForKey("USER_NAME")
+            password = loadPropertyForKey("USER_PSWRD")
+        }
+    }
 }
 
 group = "world.betterme"
@@ -62,24 +73,17 @@ gradlePlugin {
     }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
-        }
-    }
-}
-
-nexusPublishing {
-    repositories {
-        create("betterNexus") {
-            nexusUrl.set(uri("${loadPropertyForKey("NEXUS_URL")}/"))
-            snapshotRepositoryUrl.set(uri("${loadPropertyForKey("NEXUS_URL")}/"))
-            username.set(loadPropertyForKey("USER_NAME"))
-            password.set(loadPropertyForKey("USER_PSWRD"))
-        }
-    }
-}
+//
+//nexusPublishing {
+//    repositories {
+//        create("myNexus") {
+//            nexusUrl.set(uri("https://nexus-repo.betterme.world/repository/android-libraries/staging/"))
+//            snapshotRepositoryUrl.set(uri("https://nexus-repo.betterme.world/repository/android-libraries/"))
+//            username.set("android")
+//            password.set("too0ciqu8ooV")
+//        }
+//    }
+//}
 
 fun setupPublishingEnvironment() {
     val keyProperty = "gradle.publish.key"
@@ -99,7 +103,7 @@ fun setupPublishingEnvironment() {
     }
 }
 
-setupPublishingEnvironment()
+//setupPublishingEnvironment()
 
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:0.39.0")
