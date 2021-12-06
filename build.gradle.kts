@@ -46,25 +46,6 @@ gradlePlugin {
     }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            from(components["java"])
-        }
-    }
-}
-
-nexusPublishing {
-    repositories {
-        create("betterNexus") {
-            nexusUrl.set(uri(loadPropertyForKey("NEXUS_URL")))
-            snapshotRepositoryUrl.set(uri(loadPropertyForKey("NEXUS_URL")))
-            username.set(loadPropertyForKey("USER_NAME"))
-            password.set(loadPropertyForKey("USER_PSWRD"))
-        }
-    }
-}
-
 fun setupPublishingEnvironment() {
     val keyProperty = "gradle.publish.key"
     val secretProperty = "gradle.publish.secret"
@@ -87,7 +68,7 @@ setupPublishingEnvironment()
 
 dependencies {
     implementation("com.github.ben-manes:gradle-versions-plugin:0.39.0")
-    implementation("com.squareup.okhttp3:okhttp:4.9.2")
+    implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("com.squareup.moshi:moshi:1.12.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
     implementation("com.squareup.okio:okio:3.0.0")
