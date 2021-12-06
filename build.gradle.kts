@@ -12,7 +12,6 @@ plugins {
     id("com.github.ben-manes.versions") version "0.39.0"
     id("org.gradle.kotlin.embedded-kotlin") version "2.1.4"
     id("org.gradle.kotlin.kotlin-dsl") version "2.1.4"
-    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     `java-gradle-plugin`
     `maven-publish`
 }
