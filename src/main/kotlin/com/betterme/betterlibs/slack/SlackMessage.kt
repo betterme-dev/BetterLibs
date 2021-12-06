@@ -1,4 +1,4 @@
-package world.betterme.betterlibs.slack
+package com.betterme.betterlibs.slack
 
 import com.squareup.moshi.Json
 import org.gradle.internal.time.Time

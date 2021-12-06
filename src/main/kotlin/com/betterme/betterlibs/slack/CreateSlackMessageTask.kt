@@ -1,10 +1,10 @@
-package world.betterme.betterlibs.slack
+package com.betterme.betterlibs.slack
 
-import world.betterme.betterlibs.BaseDefaultTask
+import com.betterme.betterlibs.BaseDefaultTask
 import org.gradle.api.tasks.Input
-import world.betterme.betterlibs.Dependency
-import world.betterme.betterlibs.DependencyGraph
-import world.betterme.betterlibs.gradleNotation
+import com.betterme.betterlibs.Dependency
+import com.betterme.betterlibs.DependencyGraph
+import com.betterme.betterlibs.gradleNotation
 
 open class CreateSlackMessageTask : BaseDefaultTask() {
 

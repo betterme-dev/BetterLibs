@@ -1,11 +1,11 @@
-package world.betterme.betterlibs
+package com.betterme.betterlibs
 
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.maybeCreate
-import world.betterme.betterlibs.slack.CreateSlackMessageTask
+import com.betterme.betterlibs.slack.CreateSlackMessageTask
 
 open class BetterLibsPlugin : Plugin<Project> {
 

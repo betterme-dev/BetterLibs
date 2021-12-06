@@ -1,10 +1,10 @@
-package world.betterme.betterlibs.slack
+package com.betterme.betterlibs.slack
 
 import com.squareup.moshi.JsonAdapter
 import okhttp3.Response
-import world.betterme.betterlibs.Adapters.adapter
-import world.betterme.betterlibs.BaseClient
-import world.betterme.betterlibs.BaseClient.Companion.AUTHORIZATION
+import com.betterme.betterlibs.Adapters.adapter
+import com.betterme.betterlibs.BaseClient
+import com.betterme.betterlibs.BaseClient.Companion.AUTHORIZATION
 
 class SlackClient(
     private val token: String,

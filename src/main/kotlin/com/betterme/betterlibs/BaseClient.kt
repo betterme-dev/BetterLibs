@@ -1,4 +1,4 @@
-package world.betterme.betterlibs
+package com.betterme.betterlibs
 
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient

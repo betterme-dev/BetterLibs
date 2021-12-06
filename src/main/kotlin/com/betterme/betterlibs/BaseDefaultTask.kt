@@ -1,4 +1,4 @@
-package world.betterme.betterlibs
+package com.betterme.betterlibs
 
 import okio.buffer
 import okio.source

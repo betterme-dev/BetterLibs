@@ -1,4 +1,4 @@
-package world.betterme.betterlibs
+package com.betterme.betterlibs
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
