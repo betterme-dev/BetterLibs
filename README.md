@@ -17,14 +17,14 @@ _`Build script snippet for plugins DSL for Gradle 2.1 and later:`_
 
 ```groovy
 plugins {
-  id "world.betterme.betterlibs" version "$version"
+  id "com.betterme.betterlibs" version "$version"
 }
 ```
 
 _`Build script snippet for use in older Gradle versions or where dynamic configuration is required:`_
 ### `buildscript` block:
 ```groovy
-apply plugin: "world.betterme.betterlibs"
+apply plugin: "com.betterme.betterlibs"
 
 buildscript {
 
@@ -33,7 +33,7 @@ buildscript {
   }
 
   dependencies {
-    classpath "world.betterme.betterlibs:$version"
+    classpath "com.betterme.betterlibs:$version"
   }
 
 }
