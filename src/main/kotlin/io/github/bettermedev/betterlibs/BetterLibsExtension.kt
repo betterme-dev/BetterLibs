@@ -1,4 +1,4 @@
-package com.betterme.betterlibs
+package io.github.bettermedev.betterlibs
 
 open class BetterLibsExtension(
     var projectName: String = "",

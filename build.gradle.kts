@@ -25,7 +25,7 @@ repositories {
     gradlePluginPortal()
 }
 
-group = "com.betterme"
+group = "io.github.betterme-dev"
 version = "1.0.0"
 
 pluginBundle {
@@ -37,9 +37,9 @@ pluginBundle {
 gradlePlugin {
     plugins {
         register("betterlibs") {
-            id = "com.betterme.betterlibs"
+            id = "io.github.betterme-dev.betterlibs"
             displayName = "BetterLibs"
-            implementationClass = "com.betterme.betterlibs.BetterLibsPlugin"
+            implementationClass = "io.github.bettermedev.betterlibs.BetterLibsPlugin"
             description = "Gradle plugin reporting third party libraries update"
         }
     }

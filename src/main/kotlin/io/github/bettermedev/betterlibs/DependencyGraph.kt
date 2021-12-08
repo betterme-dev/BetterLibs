@@ -1,4 +1,4 @@
-package com.betterme.betterlibs
+package io.github.bettermedev.betterlibs
 
 data class DependencyGraph(
     val gradle: GradleConfig,
